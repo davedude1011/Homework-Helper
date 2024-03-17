@@ -22,7 +22,7 @@
   - **Added Keybinds for global Enter key**
 - ### ${\textsf{\color{#a86f32}Educake}}$
   - **Keybinds including global Enter Key and num keys for multiple choice items**
-
+<br><br>
 ## Installation (PC) -recommended-
 1. Download the latest version from [here](https://github.com/davedude1011/Homework-Helper/archive/refs/tags/v1.1.zip), or from the releases tab.
 3. Extract the ZIP folder.
