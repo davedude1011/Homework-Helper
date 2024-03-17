@@ -7,6 +7,7 @@ Homework Helper is a collection of Chrome extensions designed to ease multiple h
 ### Sparx
 - **Automatic Bookwork Saving and Check Filling**
 - **Built in calculator<!--, graphing tool ect-->**
+- **Selectable Text**
 <!--
 - **Built in AI chatbot**
 - **Drawing Mode** (pc)
