@@ -1,13 +1,13 @@
-# Homework Helper
+# **${\textsf{\color{#e04a59}Homework Helper}}$**
 
-## Description
-Homework Helper is a collection of Chrome extensions designed to ease multiple homework platforms including Sparx, Bedrock and Educake by providing a range of features.
+> ## Description
+> Homework Helper is a collection of Chrome extensions designed to ease multiple homework platforms including Sparx, Bedrock and Educake by providing a range of features.<br><br>
 
 ## Features
-### Sparx
-- **Automatic Bookwork Saving and Check Filling**
-- **Built in calculator<!--, graphing tool ect-->**
-- **Selectable Text**
+- ### ${\textsf{\color{#32a852}Sparx}}$
+  - **Automatic Bookwork Saving and Check Filling**
+  - **Built in calculator<!--, graphing tool ect-->**
+  - **Selectable Text**
 <!--
 - **Built in AI chatbot**
 - **Drawing Mode** (pc)
@@ -17,13 +17,13 @@ Homework Helper is a collection of Chrome extensions designed to ease multiple h
 - **Clock and Timer**
 - **Cleaner Menu**
 -->
-### Bedrock
-- **Score Tracking inside current task**
-- **Added Keybinds for global Enter key**
-### Educake
-- **Keybinds including global Enter Key and num keys for multiplechoice items**
-
-## Installation (PC) -recommended-
+- ### ${\textsf{\color{#8732a8}Bedrock}}$
+  - **Score Tracking inside current task**
+  - **Added Keybinds for global Enter key**
+- ### ${\textsf{\color{#a86f32}Educake}}$
+  - **Keybinds including global Enter Key and num keys for multiple choice items**
+<br><br>
+## Installation (PC) *-recommended-*
 1. Download the latest version from [here](https://github.com/davedude1011/Homework-Helper/archive/refs/tags/v1.1.zip), or from the releases tab.
 3. Extract the ZIP folder.
 4. Open Chrome, go to Extensions (chrome://extensions/), and enable "Developer mode."
@@ -36,5 +36,5 @@ Homework Helper is a collection of Chrome extensions designed to ease multiple h
 4. Select "Extensions" from the menu.
 5. Click on the ".zip" button.
 6. Locate the downloaded .zip file, (most likely in your downloads or files folder), and select it
-
-**Side Note** - for mobile use, you can only use the extension on the **kiwi** browser or browsers supporting custom extension unpacking.
+<br><br>
+> ***Side Note*** - for mobile use, you can only use the extension on the **kiwi** browser or browsers supporting custom extension unpacking.
