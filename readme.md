@@ -1,13 +1,13 @@
-# <span style="color: #e04a59">**Homework Helper**</span>
+# <font style="color: #e04a59">**Homework Helper**</font>
 
 > ## Description
 > Homework Helper is a collection of Chrome extensions designed to ease multiple homework platforms including Sparx, Bedrock and Educake by providing a range of features.<br><br>
 
 ## Features
-### <span style="color: #32a852">Sparx</span>
-- **Automatic Bookwork Saving and Check Filling**
-- **Built in calculator<!--, graphing tool ect-->**
-- **Selectable Text**
+- ### <font style="color: #32a852">Sparx</font>
+  - **Automatic Bookwork Saving and Check Filling**
+  - **Built in calculator<!--, graphing tool ect-->**
+  - **Selectable Text**
 <!--
 - **Built in AI chatbot**
 - **Drawing Mode** (pc)
@@ -17,11 +17,11 @@
 - **Clock and Timer**
 - **Cleaner Menu**
 -->
-### <span style="color: #8732a8">Bedrock</span>
-- **Score Tracking inside current task**
-- **Added Keybinds for global Enter key**
-### <span style="color: #a86f32">Educake</span>
-- **Keybinds including global Enter Key and num keys for multiplechoice items**
+- ### <font style="color: #8732a8">Bedrock</font>
+  - **Score Tracking inside current task**
+  - **Added Keybinds for global Enter key**
+- ### <font style="color: #a86f32">Educake</font>
+  - **Keybinds including global Enter Key and num keys for multiple choice items**
 
 ## Installation (PC) -recommended-
 1. Download the latest version from [here](https://github.com/davedude1011/Homework-Helper/archive/refs/tags/v1.1.zip), or from the releases tab.
