@@ -55,7 +55,7 @@ window.addEventListener("click", function () {
     }, 500);
 });
 function BookworkCheckLoop() {
-    var _a, _b, _c;
+    var _a, _b, _c, _d, _e;
     try {
         if (((_a = document.querySelector("[class*='_DialogTitle_']")) === null || _a === void 0 ? void 0 : _a.textContent) == "Bookwork check") {
             let BookworkCode = (_c = (_b = document.querySelector("[class*='_Chip_']")) === null || _b === void 0 ? void 0 : _b.textContent) === null || _c === void 0 ? void 0 : _c.split(" ")[1];
@@ -74,11 +74,13 @@ function BookworkCheckLoop() {
                     EditElement.style.border = "3px solid #190057";
                     EditElement.style.borderRadius = "10px";
                     EditElement.style.padding = "1vw";
+                    (_d = document.querySelector("[class*='_InlineSlotOptions_']")) === null || _d === void 0 ? void 0 : _d.remove();
+                    (_e = document.querySelector("[id*='button-']")) === null || _e === void 0 ? void 0 : _e.remove();
                 }
             }
         }
     }
-    catch (_d) { }
+    catch (_f) { }
 }
 function AddCalculator() {
     var _a;
