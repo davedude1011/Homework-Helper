@@ -81,15 +81,17 @@ function BookworkCheckLoop() {
     catch (_d) { }
 }
 function AddCalculator() {
+    var _a;
+    let QuestionContainerClass = ((_a = document.querySelector("[class*='_QuestionContainer_']")) === null || _a === void 0 ? void 0 : _a.classList[0]) || null;
     let Calculators = document.querySelectorAll(".main-calculator");
-    if (Calculators.length == 0) {
+    if (Calculators.length == 0 && QuestionContainerClass != null) {
         let NewCalculator = document.createElement("iframe");
-        NewCalculator.classList.add("_QuestionContainer_kvqo1_1");
+        NewCalculator.classList.add(QuestionContainerClass);
         NewCalculator.classList.add("main-calculator");
         NewCalculator.src = "https://www.desmos.com/scientific";
         NewCalculator.style.maxWidth = "600px";
         NewCalculator.style.width = "100%";
-        NewCalculator.style.margin = "0px 0px 1rem 1vw";
+        NewCalculator.style.margin = "auto 0 1rem 1vw";
         NewCalculator.style.borderRadius = "5px";
         let Container = document.querySelector("[class*='_Activity_']");
         if (Container) {
@@ -165,9 +167,53 @@ function SnipeBookworkCheck() {
         }
     }
 }
+function AddCSS() {
+    let CustomStyleElement = document.querySelector(".custom-styling");
+    if (!CustomStyleElement) {
+        let Styling = document.createElement("style");
+        Styling.innerHTML = `
+        :root {
+            --user-select-accessibility-setting: default !important;
+            cursor: auto !important;
+        }
+        `;
+        Styling.classList.add("custom-styling");
+        document.body.appendChild(Styling);
+    }
+}
+function AddGauthMathLink() {
+    var _a, _b;
+    let ButtonClass = ((_a = document.querySelector("[class*='_CalculatorInfoContainer_']")) === null || _a === void 0 ? void 0 : _a.classList[0]) || null;
+    let ExistingGauthButton = document.querySelector(".gauth-button");
+    if (!ExistingGauthButton && ButtonClass != null) {
+        let NewGauthButton = document.createElement("div");
+        NewGauthButton.style.cursor = "pointer";
+        NewGauthButton.classList.add(ButtonClass);
+        NewGauthButton.classList.add("gauth-button");
+        NewGauthButton.innerHTML = `<img class="_CalculatorIcon_5oh8x_23" src="https://sf16-scmcdn-ehi.gauthmath.com/obj/ehi-fe-us/gauth-portal/favicon.png"><div class="_HiddenAt_gk0gx_1 _Sm_gk0gx_12" style="text-align: center; margin-left: 5px;">Gauth</div>`;
+        NewGauthButton.addEventListener("click", function () {
+            window.open("https://www.gauthmath.com");
+        });
+        (_b = document.querySelector("[class*='_QuestionInfo_']")) === null || _b === void 0 ? void 0 : _b.appendChild(NewGauthButton);
+        let ButtonContainer = document.querySelector("[class*='_QuestionInfo_']");
+        if (ButtonContainer) {
+            let BookworkCodeElement = ButtonContainer.children[0];
+            let CalculatorButtonElement = ButtonContainer.children[1];
+            let CalculatorButtonImage = CalculatorButtonElement.querySelector("img");
+            let CalculatorButtonText = CalculatorButtonElement.querySelector("div");
+            if (CalculatorButtonText && CalculatorButtonImage) {
+                CalculatorButtonImage.style.marginLeft = "0px";
+                CalculatorButtonText.style.marginRight = "var(--spx-unit-6)";
+            }
+            ButtonContainer.insertBefore(CalculatorButtonElement, BookworkCodeElement);
+        }
+    }
+}
 function Loop() {
     BookworkCheckLoop();
     AddCalculator();
+    AddCSS();
+    AddGauthMathLink();
 }
 setInterval(Loop, 50);
 //# sourceMappingURL=sparx.js.map
