@@ -1,10 +1,10 @@
-# Homework Helper
+# <span style="color: #e04a59">**Homework Helper**</span>
 
-## Description
-Homework Helper is a collection of Chrome extensions designed to ease multiple homework platforms including Sparx, Bedrock and Educake by providing a range of features.
+> ## Description
+> Homework Helper is a collection of Chrome extensions designed to ease multiple homework platforms including Sparx, Bedrock and Educake by providing a range of features.<br><br>
 
 ## Features
-### Sparx
+### <span style="color: #32a852">Sparx</span>
 - **Automatic Bookwork Saving and Check Filling**
 - **Built in calculator<!--, graphing tool ect-->**
 - **Selectable Text**
@@ -17,10 +17,10 @@ Homework Helper is a collection of Chrome extensions designed to ease multiple h
 - **Clock and Timer**
 - **Cleaner Menu**
 -->
-### Bedrock
+### <span style="color: #8732a8">Bedrock</span>
 - **Score Tracking inside current task**
 - **Added Keybinds for global Enter key**
-### Educake
+### <span style="color: #a86f32">Educake</span>
 - **Keybinds including global Enter Key and num keys for multiplechoice items**
 
 ## Installation (PC) -recommended-
@@ -36,5 +36,5 @@ Homework Helper is a collection of Chrome extensions designed to ease multiple h
 4. Select "Extensions" from the menu.
 5. Click on the ".zip" button.
 6. Locate the downloaded .zip file, (most likely in your downloads or files folder), and select it
-
-**Side Note** - for mobile use, you can only use the extension on the **kiwi** browser or browsers supporting custom extension unpacking.
+<br><br>
+> ***Side Note*** - for mobile use, you can only use the extension on the **kiwi** browser or browsers supporting custom extension unpacking.
