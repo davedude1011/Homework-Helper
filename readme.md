@@ -19,7 +19,6 @@
 -->
 - ### ${\textsf{\color{#8732a8}Bedrock}}$
   - **Score Tracking inside current task**
-  - **Added Keybinds for global Enter key**
 - ### ${\textsf{\color{#a86f32}Educake}}$
   - **Keybinds including global Enter Key and num keys for multiple choice items**
 <br><br>
