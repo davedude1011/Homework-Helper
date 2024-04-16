@@ -1,5 +1,5 @@
 {
-    "name": "sparx3",
+    "name": "Homework-Helper",
     "version": "1",
     "description": "Your description here",
     "content_scripts": [
@@ -17,9 +17,13 @@
             "matches": ["https://my.educake.co.uk/*"],
             "js": ["dist/educake.js"],
             "run_at": "document_end"
+        },
+        {
+            "matches": ["https://app.senecalearning.com/*"],
+            "js": ["dist/seneca.js"],
+            "run_at": "document_end"
         }
     ],
-    "host_permissions": ["https://www.sparxmaths-website1.com/*", "https://www.sparxmaths-website2.com/*", "https://www.sparxmaths-website3.com/*"],
     "permissions": ["webRequest", "webRequestBlocking"],
     "manifest_version": 3
 }
