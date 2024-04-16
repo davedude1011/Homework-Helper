@@ -17,6 +17,9 @@
 - **Clock and Timer**
 - **Cleaner Menu**
 -->
+- ### ${\textsf{\color{#45bec4}Seneca}}$
+  - **Auto Fills Some/Most Blank Boxes**
+  - **Auto Completes Toggle Questions**
 - ### ${\textsf{\color{#8732a8}Bedrock}}$
   - **Score Tracking inside current task**
 - ### ${\textsf{\color{#a86f32}Educake}}$
