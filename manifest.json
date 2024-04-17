@@ -1,6 +1,6 @@
 {
     "name": "Homework-Helper",
-    "version": "1",
+    "version": "1.4",
     "description": "Your description here",
     "content_scripts": [
         {
