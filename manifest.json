@@ -24,6 +24,5 @@
             "run_at": "document_end"
         }
     ],
-    "permissions": ["webRequest", "webRequestBlocking"],
     "manifest_version": 3
 }
