@@ -25,13 +25,17 @@
 - ### ${\textsf{\color{#a86f32}Educake}}$
   - **Keybinds including global Enter Key and num keys for multiple choice items**
 <br><br>
-## Installation (PC) *-recommended-*
+## 🖥️ Installation (PC)
+### Chrome Web Store: *-recommended-*
+- [https://chromewebstore.google.com/TaskTackler](https://chromewebstore.google.com/detail/knmelikahkhldfnmafmlikolknhekkmp)
+
+### Manual Download:
 1. Download the latest version from [here](https://github.com/davedude1011/Homework-Helper/archive/refs/tags/v1.4.zip), or from the releases tab.
 3. Extract the ZIP folder.
 4. Open Chrome, go to Extensions (chrome://extensions/), and enable "Developer mode."
 5. Click on "Load unpacked" and select the extracted folder to install Sparx Helper.
 
-## Installation (Mobile)
+## 📱 Installation (Mobile)
 1. Install the **Kiwi** Browser from your mobile app store (available only on Android).
 2. Download the latest version from [here](https://github.com/davedude1011/Homework-Helper/archive/refs/tags/v1.4.zip), or from the releases tab.
 3. Open the **Kiwi** Browser and go to the menu.
