@@ -1,6 +1,6 @@
 {
     "name": "Task Tackler",
-    "version": "1.4",
+    "version": "1",
     "description": "Your description here",
     "content_scripts": [
         {
