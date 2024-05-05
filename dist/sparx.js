@@ -1,5 +1,18 @@
 "use strict";
 console.log("SPARX");
+async function isPopupDataValueActive(Variable) {
+    return new Promise((resolve) => {
+        chrome.storage.local.get(["PopupData"], (result) => {
+            let PopupData = JSON.parse(result["PopupData"]);
+            if (Variable == "Global") {
+                resolve(PopupData);
+            }
+            else {
+                resolve(PopupData[Variable]);
+            }
+        });
+    });
+}
 function GetButtonBaseTextContent() {
     let Button = document.querySelector("[class*='_ButtonBase_']");
     if (Button) {
@@ -212,10 +225,19 @@ function AddGauthMathLink() {
     }
 }
 function Loop() {
-    BookworkCheckLoop();
-    AddCalculator();
-    AddCSS();
-    AddGauthMathLink();
+    (async function () {
+        let PopupData = await isPopupDataValueActive("Global");
+        if (PopupData["SaveBookworkChecks"]) {
+            BookworkCheckLoop();
+        }
+        if (PopupData["AddCalculator"]) {
+            AddCalculator();
+        }
+        if (PopupData["GauthMathButton"]) {
+            AddGauthMathLink();
+        }
+        AddCSS();
+    })();
 }
 setInterval(Loop, 50);
 //# sourceMappingURL=sparx.js.map

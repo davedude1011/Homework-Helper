@@ -1,6 +1,6 @@
 {
     "name": "Task Tackler",
-    "version": "1",
+    "version": "1.5",
     "description": "Your description here",
     "content_scripts": [
         {
@@ -24,5 +24,17 @@
             "run_at": "document_end"
         }
     ],
+    "action": {
+        "default_popup": "popup/popup.html"
+    },
+    "permissions": [
+        "storage"
+    ],
+    "icons": { "48": "pfp.png" },
+    "browser_action": {
+      "default_icon": {
+        "48": "pfp.png"
+      }
+    },
     "manifest_version": 3
 }

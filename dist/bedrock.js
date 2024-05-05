@@ -1,5 +1,44 @@
 "use strict";
 console.log("BEDROCK");
+async function isPopupDataValueActive(Variable) {
+    return new Promise((resolve) => {
+        chrome.storage.local.get(["PopupData"], (result) => {
+            let PopupData = JSON.parse(result["PopupData"]);
+            if (Variable == "Global") {
+                resolve(PopupData);
+            }
+            else {
+                resolve(PopupData[Variable]);
+            }
+        });
+    });
+}
+let LastState = null;
+function AddMorphology() {
+    (async function () {
+        let PopupData = await isPopupDataValueActive("Global");
+        let UserState = JSON.parse(localStorage.getItem("state"));
+        if (PopupData["AddMorphology"]) {
+            if (UserState["student"]["access"]["Morphology"] != true) {
+                UserState["student"]["access"]["Morphology"] = true;
+                localStorage.setItem("state", JSON.stringify(UserState));
+            }
+        }
+        else {
+            if (UserState["student"]["access"]["Morphology"] != false) {
+                UserState["student"]["access"]["Morphology"] = false;
+                localStorage.setItem("state", JSON.stringify(UserState));
+            }
+        }
+        if (LastState != null) {
+            if (PopupData["AddMorphology"] != LastState) {
+                window.location.reload();
+            }
+        }
+        LastState = PopupData["AddMorphology"];
+    })();
+}
+setInterval(AddMorphology, 50);
 function GetUserData() {
     let StringedData = localStorage.getItem("state");
     if (StringedData) {
@@ -12,12 +51,17 @@ function GetWeeklyProgress() {
 }
 GetWeeklyProgress();
 function SetWeeklyProgress() {
-    let Outer = document.querySelector(".user-controls-group");
-    let Points = GetWeeklyProgress();
-    if (Outer) {
-        Outer.innerHTML = `<span>Points: (<b>${Points}</b>/20)</span>`;
-    }
-    DictionaryButton();
+    (async function () {
+        let PopupData = await isPopupDataValueActive("Global");
+        if (PopupData["QuickPointsDisplay"]) {
+            let Outer = document.querySelector(".user-controls-group");
+            let Points = GetWeeklyProgress();
+            if (Outer) {
+                Outer.innerHTML = `<span>Points: (<b>${Points}</b>/20)</span>`;
+            }
+            DictionaryButton();
+        }
+    })();
 }
 setInterval(SetWeeklyProgress, 50);
 function SetDictionary(Word) {
@@ -53,40 +97,51 @@ function RemoveDictionary() {
     }
 }
 function DictionaryButton() {
-    var _a;
-    let DictionaryButton = document.querySelector(".dictionary-button");
-    if (DictionaryButton) { }
-    else {
-        let VocabOuter = document.querySelector(".learning-controls");
-        if (VocabOuter) {
-            let NewButton = document.createElement("div");
-            NewButton.innerHTML = `<span _ngcontent-c5="" class="lcb-label">Toggle Dictionary</span>`;
-            NewButton.classList.add("lc-button");
-            NewButton.classList.add("lc-button--iconMobile");
-            NewButton.classList.add("dictionary-button");
-            NewButton.addEventListener("click", function () {
-                isCalculator = !isCalculator;
-                if (!isCalculator) {
-                    RemoveDictionary();
-                }
-                else {
-                    SetDictionary("");
-                    var selectionStyle = document.createElement('style');
-                    selectionStyle.classList.add("no-select");
-                    selectionStyle.textContent = `
-                        ::selection {
-                            background: transparent;
+    (async function () {
+        var _a;
+        let PopupData = await isPopupDataValueActive("Global");
+        if (PopupData["AddDictionary"]) {
+            let DictionaryButton = document.querySelector(".dictionary-button");
+            if (DictionaryButton) { }
+            else {
+                let VocabOuter = document.querySelector(".learning-controls");
+                if (VocabOuter) {
+                    let NewButton = document.createElement("div");
+                    NewButton.innerHTML = `<span _ngcontent-c5="" class="lcb-label">Toggle Dictionary</span>`;
+                    NewButton.classList.add("lc-button");
+                    NewButton.classList.add("lc-button--iconMobile");
+                    NewButton.classList.add("dictionary-button");
+                    NewButton.addEventListener("click", function () {
+                        isCalculator = !isCalculator;
+                        if (!isCalculator) {
+                            RemoveDictionary();
                         }
-                    `;
-                    document.head.appendChild(selectionStyle);
+                        else {
+                            SetDictionary("");
+                            var selectionStyle = document.createElement('style');
+                            selectionStyle.classList.add("no-select");
+                            selectionStyle.textContent = `
+                                ::selection {
+                                    background: transparent;
+                                }
+                            `;
+                            document.head.appendChild(selectionStyle);
+                        }
+                    });
+                    let ExitButton = (_a = VocabOuter.querySelector(".lc-button .fa-times-circle")) === null || _a === void 0 ? void 0 : _a.parentElement;
+                    if (ExitButton) {
+                        VocabOuter.insertBefore(NewButton, ExitButton);
+                    }
                 }
-            });
-            let ExitButton = (_a = VocabOuter.querySelector(".lc-button .fa-times-circle")) === null || _a === void 0 ? void 0 : _a.parentElement;
-            if (ExitButton) {
-                VocabOuter.insertBefore(NewButton, ExitButton);
             }
         }
-    }
+        else {
+            let DictionaryButton = document.querySelector(".dictionary-button");
+            if (DictionaryButton) {
+                DictionaryButton.remove();
+            }
+        }
+    })();
 }
 window.addEventListener("click", function (event) {
     let SelectableTextStyle = ":root { --user-select-accessibility-setting: default !important; }";

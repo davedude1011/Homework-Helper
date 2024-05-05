@@ -1,5 +1,18 @@
 "use strict";
 console.log("SENECA");
+async function isPopupDataValueActive(Variable) {
+    return new Promise((resolve) => {
+        chrome.storage.local.get(["PopupData"], (result) => {
+            let PopupData = JSON.parse(result["PopupData"]);
+            if (Variable == "Global") {
+                resolve(PopupData);
+            }
+            else {
+                resolve(PopupData[Variable]);
+            }
+        });
+    });
+}
 function AutomizeSeneca() {
     var Data = {
         "Questions": [],
@@ -24,53 +37,58 @@ function AutomizeSeneca() {
         return null;
     }
     function GetLatestQuestionAnswerOrStoreIt() {
-        let SliderQuestionElement = document.querySelector(".Toggles__wrapper:not(.passed)");
-        if (SliderQuestionElement) {
-            let Stages = {
-                "linear-gradient(rgb(250, 145, 97), rgb(247, 59, 28))": 1,
-                "linear-gradient(rgb(250, 174, 97), rgb(247, 97, 28))": 2,
-                "linear-gradient(rgb(250, 203, 97), rgb(247, 135, 28))": 3,
-                "linear-gradient(rgb(250, 231, 97), rgb(247, 173, 28))": 4,
-                "linear-gradient(rgb(71, 228, 193), rgb(7, 205, 221))": 5
-            };
-            function GetCurrentStageNumber() {
+        (async function () {
+            let PopupData = await isPopupDataValueActive("Global");
+            if (PopupData["AutoToggleBoxes"]) {
+                let SliderQuestionElement = document.querySelector(".Toggles__wrapper:not(.passed)");
                 if (SliderQuestionElement) {
-                    return Stages[SliderQuestionElement.style.backgroundImage];
-                }
-                else
-                    return null;
-            }
-            let SliderContainerElement = SliderQuestionElement.querySelector(".Toggles__singletoggles-container");
-            let SliderOuters = SliderContainerElement === null || SliderContainerElement === void 0 ? void 0 : SliderContainerElement.children;
-            if (SliderOuters) {
-                let SliderCompletionLoop = setInterval(function () {
-                    if (SliderOuters) {
-                        for (let i = 0; i < SliderOuters.length; i++) {
-                            let CurrentSliderButton = SliderOuters[i].querySelector("button");
-                            if (CurrentSliderButton) {
-                                let BeforeStageNumber = GetCurrentStageNumber();
-                                setTimeout(() => {
-                                    if (CurrentSliderButton) {
-                                        CurrentSliderButton.click();
-                                        let AfterStageNumber = GetCurrentStageNumber();
-                                        if (AfterStageNumber < BeforeStageNumber) {
-                                            setTimeout(() => {
-                                                if (CurrentSliderButton)
-                                                    CurrentSliderButton.click();
-                                            }, 100 * (i + 1));
-                                        }
-                                    }
-                                }, 100 * (i + 1));
-                            }
+                    let Stages = {
+                        "linear-gradient(rgb(250, 145, 97), rgb(247, 59, 28))": 1,
+                        "linear-gradient(rgb(250, 174, 97), rgb(247, 97, 28))": 2,
+                        "linear-gradient(rgb(250, 203, 97), rgb(247, 135, 28))": 3,
+                        "linear-gradient(rgb(250, 231, 97), rgb(247, 173, 28))": 4,
+                        "linear-gradient(rgb(71, 228, 193), rgb(7, 205, 221))": 5
+                    };
+                    function GetCurrentStageNumber() {
+                        if (SliderQuestionElement) {
+                            return Stages[SliderQuestionElement.style.backgroundImage];
                         }
-                        if (GetCurrentStageNumber() >= 5) {
-                            clearInterval(SliderCompletionLoop);
-                            SliderQuestionElement === null || SliderQuestionElement === void 0 ? void 0 : SliderQuestionElement.classList.add("passed");
-                        }
+                        else
+                            return null;
                     }
-                }, 100);
+                    let SliderContainerElement = SliderQuestionElement.querySelector(".Toggles__singletoggles-container");
+                    let SliderOuters = SliderContainerElement === null || SliderContainerElement === void 0 ? void 0 : SliderContainerElement.children;
+                    if (SliderOuters) {
+                        let SliderCompletionLoop = setInterval(function () {
+                            if (SliderOuters) {
+                                for (let i = 0; i < SliderOuters.length; i++) {
+                                    let CurrentSliderButton = SliderOuters[i].querySelector("button");
+                                    if (CurrentSliderButton) {
+                                        let BeforeStageNumber = GetCurrentStageNumber();
+                                        setTimeout(() => {
+                                            if (CurrentSliderButton) {
+                                                CurrentSliderButton.click();
+                                                let AfterStageNumber = GetCurrentStageNumber();
+                                                if (AfterStageNumber < BeforeStageNumber) {
+                                                    setTimeout(() => {
+                                                        if (CurrentSliderButton)
+                                                            CurrentSliderButton.click();
+                                                    }, 100 * (i + 1));
+                                                }
+                                            }
+                                        }, 100 * (i + 1));
+                                    }
+                                }
+                                if (GetCurrentStageNumber() >= 5) {
+                                    clearInterval(SliderCompletionLoop);
+                                    SliderQuestionElement === null || SliderQuestionElement === void 0 ? void 0 : SliderQuestionElement.classList.add("passed");
+                                }
+                            }
+                        }, 100);
+                    }
+                }
             }
-        }
+        })();
         let ContinueButton = FindElementWithSpecificTextContent("Continue", "button");
         if (ContinueButton) {
             ContinueButton.click();
@@ -81,28 +99,40 @@ function AutomizeSeneca() {
 }
 AutomizeSeneca();
 function SenecaAddCSS() {
-    let CustomStyleElement = document.querySelector(".custom-styling");
-    if (!CustomStyleElement) {
-        let Styling = document.createElement("style");
-        Styling.innerHTML = `
-        :root {
-            --user-select-accessibility-setting: default !important;
-            cursor: auto !important;
+    (async function () {
+        let PopupData = await isPopupDataValueActive("Global");
+        if (PopupData["FillInputBoxes"]) {
+            let CustomStyleElement = document.querySelector(".custom-styling");
+            if (CustomStyleElement) { }
+            else {
+                let Styling = document.createElement("style");
+                Styling.innerHTML = `
+                :root {
+                    --user-select-accessibility-setting: default !important;
+                    cursor: auto !important;
+                }
+                [class*='TestedWord_word_skeleton__'] {
+                    visibility: visible !important;
+                    font-weight: bold !important;
+                    color: white;
+                    opacity: 0.4
+                }
+                input[class*='Input_input__'] {
+                    text-align: left !important;
+                    line-height: 0 !important
+                }
+                `;
+                Styling.classList.add("custom-styling");
+                document.body.appendChild(Styling);
+            }
         }
-        [class*='TestedWord_word_skeleton__'] {
-            visibility: visible !important;
-            font-weight: bold !important;
-            color: white;
-            opacity: 0.4
+        else {
+            let CustomStyleElement = document.querySelector(".custom-styling");
+            if (CustomStyleElement) {
+                CustomStyleElement.remove();
+            }
         }
-        input[class*='Input_input__'] {
-            text-align: left !important;
-            line-height: 0 !important
-        }
-        `;
-        Styling.classList.add("custom-styling");
-        document.body.appendChild(Styling);
-    }
+    })();
 }
-SenecaAddCSS();
+setInterval(SenecaAddCSS, 50);
 //# sourceMappingURL=seneca.js.map
